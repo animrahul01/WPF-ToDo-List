@@ -1,0 +1,55 @@
+﻿<Window x:Class="ToDo_List.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDo_List" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" Background="{DynamicResource WindowBackgroundColor}"
+        Title="Todo Task List" Height="450" Width="800">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowBackgroundColor">
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Gray"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/> <!-- for list box -->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/> <!-- for the task load -->
+            <RowDefinition Height="*"/> <!-- for the task input -->
+            <RowDefinition Height="*"/> <!-- for buttons -->
+        </Grid.RowDefinitions>
+
+        <!--<TextBox x:Name="txtFileData" Grid.Row="0" Grid.Column="0" Margin="10" FontSize="12"
+                 Style="{StaticResource PlaceHolderSearchBox}"
+                 IsReadOnly="True" Foreground="Maroon" Tag="No Data Found" VerticalScrollBarVisibility="Auto" 
+                 HorizontalScrollBarVisibility="Auto"/>-->
+        
+        <ListBox x:Name="txtFileData" Grid.Row="0" Grid.Column="0" Margin="10" FontSize="12"
+         Foreground="Maroon" SelectionChanged="txtFileData_SelectionChanged"/>
+
+
+        <TextBox x:Name="txtInput" Grid.Row="1" Grid.Column="0" Margin="10" FontSize="12"
+                 Style="{StaticResource PlaceHolderSearchBox}" Tag="Enter Your Task List"
+                 KeyDown="txtInput_KeyDown" TextChanged="txtInput_TextChanged"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+
+            <Button x:Name="btnAdd" Content="Add Task" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Padding="65,25" Margin="5" IsEnabled="False" Click="btnAdd_Click"/>
+
+            <Button x:Name="btnDelete" Content="Delete Task" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Padding="70,25" Margin="5" IsEnabled="False" Click="btnDelete_Click"/>
+
+        </StackPanel>
+
+        <ListBox x:Name="lstBox" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="10" FontSize="16" FontWeight="Bold" BorderBrush="Gray"
+                 Foreground="Maroon" SelectionChanged="ListBox_SelectionChanged">
+            
+        </ListBox>
+        
+    </Grid>
+</Window>
